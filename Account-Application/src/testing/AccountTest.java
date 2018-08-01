@@ -48,12 +48,34 @@ public class AccountTest {
 	@Test
 	public void retrieveAccountTest2() {
 		Service service = new Service();
-		
+
 		Account acc1 = new Account("John", "Mills", 12345);
 		service.addAccount(acc1);
-		
+
 		assertNull("Name should not be found", service.retrieveAccount(0));
 		assertNull("Name should not be found", service.retrieveAccount("NullName"));
-		
 
-}}
+	}
+
+	@Test
+	public void countNamesTest() {
+
+		Service service = new Service();
+
+		Account acc1 = new Account("John", "Mills", 12345);
+		service.addAccount(acc1);
+		service.addAccount(new Account("Mike", "Myers", 3243));
+		service.addAccount(new Account("John", "Bowie", 234235));
+		service.addAccount(new Account("John", "Bowide", 24235));
+		service.addAccount(new Account("John", "Bowider", 24235));
+
+		assertEquals("Name should not be found", 4, service.countNames("John"));
+
+	}
+	
+	@Test
+	public void JSONtest() {
+		
+	}
+
+}

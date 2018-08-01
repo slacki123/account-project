@@ -40,5 +40,15 @@ public class Service {
 	public HashMap<Integer, Account> getHashMap() {
 		return accountList;
 	}
+	
+	public int countNames(String firstName) {
+		int counter = 0;
+		for (Map.Entry<Integer, Account> a : accountList.entrySet()) {
+			if (a.getValue().getFirstName().equals(firstName)) {
+				counter++;
+			}
+		}
+		return counter;
+	}
 
 }
