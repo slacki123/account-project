@@ -52,7 +52,7 @@ public class AccountTest {
 		Account acc1 = new Account("John", "Mills", 12345);
 		service.addAccount(acc1);
 		
-				
+		assertNull("Name should not be found", service.retrieveAccount(0));
 		assertNull("Name should not be found", service.retrieveAccount("NullName"));
 		
 
