@@ -37,9 +37,9 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 	
-	public String toString() {
-		return "Name = " + firstName + " " + lastName + ", Account number = " + accountNumber;
-	}
+//	public String toString() {
+//		return "Name = " + firstName + " " + lastName + ", Account number = " + accountNumber;
+//	}
 
 
 }

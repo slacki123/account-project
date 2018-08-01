@@ -3,9 +3,14 @@ package project;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 public class Service {
 
 	HashMap<Integer, Account> accountList = new HashMap<Integer, Account>();
+	
+	
+	
 
 	public void addAccount(Account acc) {
 		accountList.put(accountList.size() + 1, acc);
@@ -30,6 +35,10 @@ public class Service {
 		}
 		return null;
 
+	}
+	
+	public HashMap<Integer, Account> getHashMap() {
+		return accountList;
 	}
 
 }
