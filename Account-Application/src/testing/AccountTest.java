@@ -3,19 +3,25 @@ package testing;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 import project.Account;
 import project.Service;
 
 public class AccountTest {
+	
 
 	@Test
 	public void setFirstNameTest() {
+	
 		Account acc1 = new Account("Jon", "Mills", 12345);
 		acc1.setFirstName("John");
 		assertEquals("Wrong name", "John", acc1.getFirstName());
 	}
+
+	
 
 	@Test
 	public void setLastNameTest() {
@@ -39,8 +45,10 @@ public class AccountTest {
 		service.addAccount(acc1);
 		assertNull("Name should not be found", service.retrieveAccount(0));
 		assertNull("Name should not be found", service.retrieveAccount("NullName"));
-		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345", service.retrieveAccount(12345).toString());
-		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345", service.retrieveAccount("John").toString());
+		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345",
+				service.retrieveAccount(12345).toString());
+		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345",
+				service.retrieveAccount("John").toString());
 
 	}
 
@@ -55,13 +63,17 @@ public class AccountTest {
 		service.addAccount(new Account("John", "Bowie", 234235));
 		service.addAccount(new Account("John", "Bowide", 24235));
 		service.addAccount(new Account("John", "Bowider", 24235));
-				
+
 		assertNull("Name should not be found", service.retrieveAccount(0));
 		assertNull("Name should not be found", service.retrieveAccount("NullName"));
 		assertEquals("Name should not be found", 5, service.countNames("John"));
 
 	}
-	
 
+	@Test
+	public void getHashMapTest() {
+		Service service = new Service();
+		assertEquals("The HashMap does not populate", service.getHashMap().size(), 6);
+	}
 
 }
