@@ -12,16 +12,16 @@ public class AccountTest {
 
 	@Test
 	public void setFirstNameTest() {
-		Account acc = new Account("Jon", "Mills", 12345);
-		acc.setFirstName("John");
-		assertEquals("Wrong name", "John", acc.getFirstName());
+		Account acc1 = new Account("Jon", "Mills", 12345);
+		acc1.setFirstName("John");
+		assertEquals("Wrong name", "John", acc1.getFirstName());
 	}
 
 	@Test
 	public void setLastNameTest() {
-		Account acc = new Account("Jon", "Mills", 12345);
-		acc.setLastName("John");
-		assertEquals("Wrong name", "John", acc.getLastName());
+		Account acc1 = new Account("Jon", "Mills", 12345);
+		acc1.setLastName("John");
+		assertEquals("Wrong name", "John", acc1.getLastName());
 	}
 
 	@Test
@@ -37,23 +37,10 @@ public class AccountTest {
 
 		Account acc1 = new Account("John", "Mills", 12345);
 		service.addAccount(acc1);
-
-		assertNull("Name should not be found", service.retrieveAccount("NullName"));
-		assertEquals("Account not found", service.retrieveAccount("John").toString(),
-				"Name = John Mills, Account number = 12345");
-		assertEquals("Account not found", service.retrieveAccount(12345).toString(),
-				"Name = John Mills, Account number = 12345");
-	}
-
-	@Test
-	public void retrieveAccountTest2() {
-		Service service = new Service();
-
-		Account acc1 = new Account("John", "Mills", 12345);
-		service.addAccount(acc1);
-
 		assertNull("Name should not be found", service.retrieveAccount(0));
 		assertNull("Name should not be found", service.retrieveAccount("NullName"));
+		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345", service.retrieveAccount(12345).toString());
+		assertEquals("Name should not be found", "Name = John Mills, Account number = 12345", service.retrieveAccount("John").toString());
 
 	}
 
@@ -68,14 +55,13 @@ public class AccountTest {
 		service.addAccount(new Account("John", "Bowie", 234235));
 		service.addAccount(new Account("John", "Bowide", 24235));
 		service.addAccount(new Account("John", "Bowider", 24235));
-
-		assertEquals("Name should not be found", 4, service.countNames("John"));
+				
+		assertNull("Name should not be found", service.retrieveAccount(0));
+		assertNull("Name should not be found", service.retrieveAccount("NullName"));
+		assertEquals("Name should not be found", 5, service.countNames("John"));
 
 	}
 	
-	@Test
-	public void JSONtest() {
-		
-	}
+
 
 }

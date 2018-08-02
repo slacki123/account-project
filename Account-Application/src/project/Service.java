@@ -8,19 +8,16 @@ import org.json.JSONObject;
 public class Service {
 
 	private static HashMap<Integer, Account> accountList = new HashMap<Integer, Account>();
-	
-	
-	
-
+		
 	public void addAccount(Account acc) {
 		accountList.put(accountList.size() + 1, acc);
 	}
 
 	public Account retrieveAccount(String firstName) {
 
-		for (Map.Entry<Integer, Account> a : accountList.entrySet()) {
-			if (a.getValue().getFirstName().equals(firstName)) {
-				return a.getValue();
+		for (Account a : accountList.values()) {
+			if (a.getFirstName().equals(firstName)) {
+				return a;
 			}
 		}
 		return null;
@@ -49,6 +46,11 @@ public class Service {
 			}
 		}
 		return counter;
+	}
+	
+	public JSONObject toJSON() {
+		JSONObject json = new JSONObject(accountList);
+		return json;
 	}
 
 }
