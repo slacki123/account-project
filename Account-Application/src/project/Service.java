@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class Service {
 
-	HashMap<Integer, Account> accountList = new HashMap<Integer, Account>();
+	private static HashMap<Integer, Account> accountList = new HashMap<Integer, Account>();
 	
 	
 	
@@ -28,9 +28,9 @@ public class Service {
 
 	public Account retrieveAccount(int accNumber) {
 
-		for (Map.Entry<Integer, Account> a : accountList.entrySet()) {
-			if (a.getValue().getAccountNumber()==accNumber) {
-				return a.getValue();
+		for (Account a : accountList.values()) {
+			if (a.getAccountNumber()==accNumber) {
+				return a;
 			}
 		}
 		return null;
@@ -38,7 +38,7 @@ public class Service {
 	}
 	
 	public HashMap<Integer, Account> getHashMap() {
-		return accountList;
+		return new HashMap<Integer, Account>(accountList);
 	}
 	
 	public int countNames(String firstName) {
